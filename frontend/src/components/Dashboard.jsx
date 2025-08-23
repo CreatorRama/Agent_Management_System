@@ -172,3 +172,5 @@ const DashboardHome = () => (
     </div>
   </div>
 )
+
+export default Dashboard

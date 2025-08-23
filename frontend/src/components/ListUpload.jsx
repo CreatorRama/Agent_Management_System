@@ -147,18 +147,21 @@ const ListUpload = () => {
               ? 'border-green-400 bg-green-50'
               : 'border-gray-300 hover:border-gray-400'
           }`}
-          onDragEnter={handleDrag}
-          onDragLeave={handleDrag}
-          onDragOver={handleDrag}
-          onDrop={handleDrop}
+          onDragEnter={!file ? handleDrag : undefined}
+          onDragLeave={!file ? handleDrag : undefined}
+          onDragOver={!file ? handleDrag : undefined}
+          onDrop={!file ? handleDrop : undefined}
         >
-          <input
-            id="file-input"
-            type="file"
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-            accept=".csv,.xlsx,.xls"
-            onChange={handleFileInputChange}
-          />
+          {/* Only show file input when no file is selected */}
+          {!file && (
+            <input
+              id="file-input"
+              type="file"
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              accept=".csv,.xlsx,.xls"
+              onChange={handleFileInputChange}
+            />
+          )}
           
           {file ? (
             <div className="space-y-4">
@@ -215,6 +218,7 @@ const ListUpload = () => {
               <button
                 type="button"
                 className="btn-primary"
+                onClick={() => document.getElementById('file-input')?.click()}
               >
                 Choose File
               </button>
