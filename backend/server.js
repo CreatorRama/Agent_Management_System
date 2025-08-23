@@ -28,22 +28,21 @@ mongoose.connect(process.env.MONGO_URI, {
 // Create default admin user if not exists
 const createDefaultAdmin = async () => {
   const User = require('./models/User');
-  const bcrypt = require('bcryptjs');
   
   try {
     const adminExists = await User.findOne({ email: 'admin@example.com' });
     if (!adminExists) {
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash('admin123', salt);
-      
+     
       const admin = new User({
         email: 'admin@example.com',
-        password: hashedPassword
-      });
+        password:'admin123'
+      })
+
       
       await admin.save();
       console.log('Default admin created: admin@example.com / admin123');
     }
+
   } catch (error) {
     console.error('Error creating default admin:', error);
   }

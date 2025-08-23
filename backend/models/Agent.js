@@ -12,6 +12,7 @@ const AgentSchema = new mongoose.Schema({
   },
   mobileNumber: {
     type: String,
+    unique: true,
     required: true
   },
   password: {
