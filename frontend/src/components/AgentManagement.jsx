@@ -46,7 +46,7 @@ const AgentManagement = () => {
       setShowPassword(false)
     } catch (error) {
       console.error('Error adding agent:', error)
-      const errorMsg = error.response?.data?.msg || 
+      const errorMsg = error.response?.data?.message || 
                       error.response?.data?.errors?.[0]?.msg || 
                       'Failed to add agent'
       toast.error(errorMsg)
