@@ -8,7 +8,9 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['https://agent-management-system-gamma.vercel.app','https://agent-management-system-creatorramas-projects.vercel.app','http://localhost:3000']
+}));
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
